@@ -1,0 +1,44 @@
+[
+ {
+  "vendor_id": 82,
+  "payment_id": 744,
+  "move_id": 1496,
+  "old_bank_id": 66,
+  "new_bank_id": 81
+ },
+ {
+  "vendor_id": 87,
+  "payment_id": 1081,
+  "move_id": 2170,
+  "old_bank_id": 71,
+  "new_bank_id": 82
+ },
+ {
+  "vendor_id": 92,
+  "payment_id": 1305,
+  "move_id": 2618,
+  "old_bank_id": 76,
+  "new_bank_id": 83
+ },
+ {
+  "vendor_id": 93,
+  "payment_id": 695,
+  "move_id": 1398,
+  "old_bank_id": 77,
+  "new_bank_id": 84
+ },
+ {
+  "vendor_id": 94,
+  "payment_id": 914,
+  "move_id": 1836,
+  "old_bank_id": 78,
+  "new_bank_id": 85
+ },
+ {
+  "vendor_id": 95,
+  "payment_id": 1005,
+  "move_id": 2018,
+  "old_bank_id": 79,
+  "new_bank_id": 86
+ }
+]

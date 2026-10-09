@@ -1,0 +1,101 @@
+[
+ {
+  "vendor_id": 53,
+  "edit_msg_id": 28689,
+  "revert_msg_id": 28691,
+  "payment_id": 738,
+  "payment_date": "2025-05-28",
+  "new_edit_date": "2025-05-26",
+  "new_revert_date": "2025-05-31",
+  "applied_new_edit_date": "2025-05-26",
+  "applied_new_revert_date": "2025-05-31"
+ },
+ {
+  "vendor_id": 60,
+  "edit_msg_id": 28701,
+  "revert_msg_id": 28703,
+  "payment_id": 1315,
+  "payment_date": "2025-05-10",
+  "new_edit_date": "2025-05-08",
+  "new_revert_date": "2025-05-13",
+  "applied_new_edit_date": "2025-05-08",
+  "applied_new_revert_date": "2025-05-13"
+ },
+ {
+  "vendor_id": 65,
+  "edit_msg_id": 28705,
+  "revert_msg_id": 28707,
+  "payment_id": 1208,
+  "payment_date": "2025-10-25",
+  "new_edit_date": "2025-10-23",
+  "new_revert_date": "2025-10-28",
+  "applied_new_edit_date": "2025-10-23",
+  "applied_new_revert_date": "2025-10-28"
+ },
+ {
+  "vendor_id": 67,
+  "edit_msg_id": 28709,
+  "revert_msg_id": 28711,
+  "payment_id": 478,
+  "payment_date": "2025-02-26",
+  "new_edit_date": "2025-02-24",
+  "new_revert_date": "2025-03-01",
+  "applied_new_edit_date": "2025-02-24",
+  "applied_new_revert_date": "2025-03-01"
+ },
+ {
+  "vendor_id": 69,
+  "edit_msg_id": 28713,
+  "revert_msg_id": 28715,
+  "payment_id": 1333,
+  "payment_date": "2025-08-25",
+  "new_edit_date": "2025-08-23",
+  "new_revert_date": "2025-08-28",
+  "applied_new_edit_date": "2025-08-23",
+  "applied_new_revert_date": "2025-08-28"
+ },
+ {
+  "vendor_id": 76,
+  "edit_msg_id": 28717,
+  "revert_msg_id": 28719,
+  "payment_id": 1120,
+  "payment_date": "2025-09-19",
+  "new_edit_date": "2025-09-17",
+  "new_revert_date": "2025-09-22",
+  "applied_new_edit_date": "2025-09-17",
+  "applied_new_revert_date": "2025-09-22"
+ },
+ {
+  "vendor_id": 78,
+  "edit_msg_id": 28721,
+  "revert_msg_id": 28723,
+  "payment_id": 640,
+  "payment_date": "2025-04-12",
+  "new_edit_date": "2025-04-10",
+  "new_revert_date": "2025-04-15",
+  "applied_new_edit_date": "2025-04-10",
+  "applied_new_revert_date": "2025-04-15"
+ },
+ {
+  "vendor_id": 79,
+  "edit_msg_id": 28725,
+  "revert_msg_id": 28727,
+  "payment_id": 1188,
+  "payment_date": "2025-10-15",
+  "new_edit_date": "2025-10-13",
+  "new_revert_date": "2025-10-18",
+  "applied_new_edit_date": "2025-10-13",
+  "applied_new_revert_date": "2025-10-18"
+ },
+ {
+  "vendor_id": 80,
+  "edit_msg_id": 28729,
+  "revert_msg_id": 28731,
+  "payment_id": 667,
+  "payment_date": "2025-04-23",
+  "new_edit_date": "2025-04-21",
+  "new_revert_date": "2025-04-26",
+  "applied_new_edit_date": "2025-04-21",
+  "applied_new_revert_date": "2025-04-26"
+ }
+]

@@ -1,0 +1,7 @@
+APPROVAL RULE
+
+The approval threshold is USD 20,000.
+
+An order at or below this amount is confirmed by its buyer alone. No separate approval step is required.
+
+An order above this amount additionally requires approval by a purchase manager, in addition to the buyer who confirmed it.

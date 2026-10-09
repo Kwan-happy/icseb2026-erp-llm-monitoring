@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vendor_audit.schema.json",
+  "title": "Vendor master-data audit document",
+  "description": "Per-vendor audit trail of res.partner + res.partner.bank field changes (scenario 3). Off the PO FK spine — built from Odoo mail-tracking. Facts + neutral fields only: no 'authorized' verdict; the LLM decides if a change is suspicious from context (who/what field/when vs payment).",
+  "type": "object",
+  "required": ["vendor", "changes", "change_count"],
+  "properties": {
+    "vendor": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {"type": ["integer", "null"]},
+        "name": {"type": ["string", "null"]},
+        "commercial_partner_id": {"type": ["integer", "null"]},
+        "supplier_rank": {"type": ["integer", "null"]}
+      }
+    },
+    "changes": {
+      "type": "array",
+      "description": "One record per tracked field change, oldest first.",
+      "items": {
+        "type": "object",
+        "required": ["target", "model", "field", "changed_at"],
+        "properties": {
+          "target": {"type": "string", "enum": ["bank_account", "partner_core"]},
+          "model": {"type": "string", "enum": ["res.partner", "res.partner.bank"]},
+          "field": {"type": ["string", "null"]},
+          "old_value": {"type": ["string", "null"]},
+          "new_value": {"type": ["string", "null"]},
+          "changed_by": {
+            "type": "object",
+            "properties": {
+              "user_id": {"type": ["integer", "null"]},
+              "name": {"type": ["string", "null"]}
+            }
+          },
+          "changed_at": {"type": ["string", "null"]},
+          "bank_ref": {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "change_count": {"type": "integer"},
+    "payments": {
+      "type": "array",
+      "description": "this vendor's payments across all its POs (date + amount + destination account facts only, no proximity verdict), so a change landing shortly before a payment run — or a payment landing on a recently added account — is observable to a detector without the extract itself judging it.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_number": {"type": ["string", "null"]},
+          "amount": {"type": ["number", "null"]},
+          "date": {"type": ["string", "null"]},
+          "destination_bank_account_id": {
+            "type": ["integer", "null"],
+            "description": "Which bank account this payment was sent to. Matches bank_account_additions[].bank_ref, so a detector can notice a payment landing on a non-first (account_ordinal > 1) account."
+          }
+        }
+      }
+    },
+    "bank_account_additions": {
+      "type": "array",
+      "description": "S3 support: this vendor's bank-account row CREATIONS (facts only; a separate array from `changes`, deliberately — an addition is not a tracked field edit, and mail_tracking_value never records the row insert itself, so this is sourced from res_partner_bank.create_date/create_uid instead). `account_ordinal` = 1 is the vendor's earliest account by create_date/id; the extract does not decide which ordinal is suspicious.",
+      "items": {
+        "type": "object",
+        "required": ["bank_ref", "account_ordinal"],
+        "properties": {
+          "bank_ref": {"type": ["integer", "null"]},
+          "acc_number": {"type": ["string", "null"]},
+          "created_by": {
+            "type": "object",
+            "properties": {
+              "user_id": {"type": ["integer", "null"]},
+              "name": {"type": ["string", "null"]}
+            }
+          },
+          "created_at": {"type": ["string", "null"]},
+          "account_ordinal": {"type": "integer"}
+        }
+      }
+    }
+  }
+}

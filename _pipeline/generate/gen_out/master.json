@@ -1,0 +1,781 @@
+{
+  "company_id": 1,
+  "vendors": [
+    {
+      "idx": 0,
+      "id": 47,
+      "bank_id": 31,
+      "name": "Sirikul Trading Co., Ltd."
+    },
+    {
+      "idx": 1,
+      "id": 48,
+      "bank_id": 32,
+      "name": "Bangkok Supply Co., Ltd."
+    },
+    {
+      "idx": 2,
+      "id": 49,
+      "bank_id": 33,
+      "name": "Thonburi Industries Co., Ltd."
+    },
+    {
+      "idx": 3,
+      "id": 50,
+      "bank_id": 34,
+      "name": "Chao Phraya Enterprises Co., Ltd."
+    },
+    {
+      "idx": 4,
+      "id": 51,
+      "bank_id": 35,
+      "name": "Rattana Distribution Co., Ltd."
+    },
+    {
+      "idx": 5,
+      "id": 52,
+      "bank_id": 36,
+      "name": "Pattana Trading Co., Ltd."
+    },
+    {
+      "idx": 6,
+      "id": 53,
+      "bank_id": 37,
+      "name": "Siam Supply Co., Ltd."
+    },
+    {
+      "idx": 7,
+      "id": 54,
+      "bank_id": 38,
+      "name": "Ayutthaya Industries Co., Ltd."
+    },
+    {
+      "idx": 8,
+      "id": 55,
+      "bank_id": 39,
+      "name": "Krungthep Enterprises Co., Ltd."
+    },
+    {
+      "idx": 9,
+      "id": 56,
+      "bank_id": 40,
+      "name": "Sathorn Distribution Co., Ltd."
+    },
+    {
+      "idx": 10,
+      "id": 57,
+      "bank_id": 41,
+      "name": "Chatuchak Trading Co., Ltd."
+    },
+    {
+      "idx": 11,
+      "id": 58,
+      "bank_id": 42,
+      "name": "Rayong Supply Co., Ltd."
+    },
+    {
+      "idx": 12,
+      "id": 59,
+      "bank_id": 43,
+      "name": "Chonburi Industries Co., Ltd."
+    },
+    {
+      "idx": 13,
+      "id": 60,
+      "bank_id": 44,
+      "name": "Nakhon Enterprises Co., Ltd."
+    },
+    {
+      "idx": 14,
+      "id": 61,
+      "bank_id": 45,
+      "name": "Suvarna Distribution Co., Ltd."
+    },
+    {
+      "idx": 15,
+      "id": 62,
+      "bank_id": 46,
+      "name": "Metro Trading Co., Ltd."
+    },
+    {
+      "idx": 16,
+      "id": 63,
+      "bank_id": 47,
+      "name": "Golden Gate Supply Co., Ltd."
+    },
+    {
+      "idx": 17,
+      "id": 64,
+      "bank_id": 48,
+      "name": "Union Industries Co., Ltd."
+    },
+    {
+      "idx": 18,
+      "id": 65,
+      "bank_id": 49,
+      "name": "Apex Enterprises Co., Ltd."
+    },
+    {
+      "idx": 19,
+      "id": 66,
+      "bank_id": 50,
+      "name": "Delta Distribution Co., Ltd."
+    },
+    {
+      "idx": 20,
+      "id": 67,
+      "bank_id": 51,
+      "name": "Horizon Trading Co., Ltd."
+    },
+    {
+      "idx": 21,
+      "id": 68,
+      "bank_id": 52,
+      "name": "Summit Supply Co., Ltd."
+    },
+    {
+      "idx": 22,
+      "id": 69,
+      "bank_id": 53,
+      "name": "Pioneer Industries Co., Ltd."
+    },
+    {
+      "idx": 23,
+      "id": 70,
+      "bank_id": 54,
+      "name": "Vantage Enterprises Co., Ltd."
+    },
+    {
+      "idx": 24,
+      "id": 71,
+      "bank_id": 55,
+      "name": "Meridian Distribution Co., Ltd."
+    },
+    {
+      "idx": 25,
+      "id": 72,
+      "bank_id": 56,
+      "name": "Anchor Trading Co., Ltd."
+    },
+    {
+      "idx": 26,
+      "id": 73,
+      "bank_id": 57,
+      "name": "Crestline Supply Co., Ltd."
+    },
+    {
+      "idx": 27,
+      "id": 74,
+      "bank_id": 58,
+      "name": "Northstar Industries Co., Ltd."
+    },
+    {
+      "idx": 28,
+      "id": 75,
+      "bank_id": 59,
+      "name": "Silverline Enterprises Co., Ltd."
+    },
+    {
+      "idx": 29,
+      "id": 76,
+      "bank_id": 60,
+      "name": "Riverside Distribution Co., Ltd."
+    },
+    {
+      "idx": 30,
+      "id": 77,
+      "bank_id": 61,
+      "name": "Eastgate Trading Co., Ltd."
+    },
+    {
+      "idx": 31,
+      "id": 78,
+      "bank_id": 62,
+      "name": "Lotus Park Supply Co., Ltd."
+    },
+    {
+      "idx": 32,
+      "id": 79,
+      "bank_id": 63,
+      "name": "Bangna Industries Co., Ltd."
+    },
+    {
+      "idx": 33,
+      "id": 80,
+      "bank_id": 64,
+      "name": "Sriracha Enterprises Co., Ltd."
+    },
+    {
+      "idx": 34,
+      "id": 81,
+      "bank_id": 65,
+      "name": "Lamphun Distribution Co., Ltd."
+    },
+    {
+      "idx": 35,
+      "id": 82,
+      "bank_id": 66,
+      "name": "Sirikul Trading Co., Ltd."
+    },
+    {
+      "idx": 36,
+      "id": 83,
+      "bank_id": 67,
+      "name": "Bangkok Supply Co., Ltd."
+    },
+    {
+      "idx": 37,
+      "id": 84,
+      "bank_id": 68,
+      "name": "Thonburi Industries Co., Ltd."
+    },
+    {
+      "idx": 38,
+      "id": 85,
+      "bank_id": 69,
+      "name": "Chao Phraya Enterprises Co., Ltd."
+    },
+    {
+      "idx": 39,
+      "id": 86,
+      "bank_id": 70,
+      "name": "Rattana Distribution Co., Ltd."
+    },
+    {
+      "idx": 40,
+      "id": 87,
+      "bank_id": 71,
+      "name": "Pattana Trading Co., Ltd."
+    },
+    {
+      "idx": 41,
+      "id": 88,
+      "bank_id": 72,
+      "name": "Siam Supply Co., Ltd."
+    },
+    {
+      "idx": 42,
+      "id": 89,
+      "bank_id": 73,
+      "name": "Ayutthaya Industries Co., Ltd."
+    },
+    {
+      "idx": 43,
+      "id": 90,
+      "bank_id": 74,
+      "name": "Krungthep Enterprises Co., Ltd."
+    },
+    {
+      "idx": 44,
+      "id": 91,
+      "bank_id": 75,
+      "name": "Sathorn Distribution Co., Ltd."
+    },
+    {
+      "idx": 45,
+      "id": 92,
+      "bank_id": 76,
+      "name": "Chatuchak Trading Co., Ltd."
+    },
+    {
+      "idx": 46,
+      "id": 93,
+      "bank_id": 77,
+      "name": "Rayong Supply Co., Ltd."
+    },
+    {
+      "idx": 47,
+      "id": 94,
+      "bank_id": 78,
+      "name": "Chonburi Industries Co., Ltd."
+    },
+    {
+      "idx": 48,
+      "id": 95,
+      "bank_id": 79,
+      "name": "Nakhon Enterprises Co., Ltd."
+    },
+    {
+      "idx": 49,
+      "id": 96,
+      "bank_id": 80,
+      "name": "Suvarna Distribution Co., Ltd."
+    }
+  ],
+  "products": [
+    {
+      "idx": 0,
+      "id": 61,
+      "default_code": "P-C1-001",
+      "standard_price": 301.97
+    },
+    {
+      "idx": 1,
+      "id": 62,
+      "default_code": "P-C1-002",
+      "standard_price": 512.07
+    },
+    {
+      "idx": 2,
+      "id": 63,
+      "default_code": "P-C1-003",
+      "standard_price": 2091.88
+    },
+    {
+      "idx": 3,
+      "id": 64,
+      "default_code": "P-C1-004",
+      "standard_price": 825.47
+    },
+    {
+      "idx": 4,
+      "id": 65,
+      "default_code": "P-C1-005",
+      "standard_price": 1530.39
+    },
+    {
+      "idx": 5,
+      "id": 66,
+      "default_code": "P-C1-006",
+      "standard_price": 1143.24
+    },
+    {
+      "idx": 6,
+      "id": 67,
+      "default_code": "P-C1-007",
+      "standard_price": 407.52
+    },
+    {
+      "idx": 7,
+      "id": 68,
+      "default_code": "P-C1-008",
+      "standard_price": 1109.58
+    },
+    {
+      "idx": 8,
+      "id": 69,
+      "default_code": "P-C1-009",
+      "standard_price": 534.84
+    },
+    {
+      "idx": 9,
+      "id": 70,
+      "default_code": "P-C1-010",
+      "standard_price": 532.22
+    },
+    {
+      "idx": 10,
+      "id": 71,
+      "default_code": "P-C2-001",
+      "standard_price": 760.27
+    },
+    {
+      "idx": 11,
+      "id": 72,
+      "default_code": "P-C2-002",
+      "standard_price": 191.34
+    },
+    {
+      "idx": 12,
+      "id": 73,
+      "default_code": "P-C2-003",
+      "standard_price": 1928.35
+    },
+    {
+      "idx": 13,
+      "id": 74,
+      "default_code": "P-C2-004",
+      "standard_price": 395.7
+    },
+    {
+      "idx": 14,
+      "id": 75,
+      "default_code": "P-C2-005",
+      "standard_price": 1638.13
+    },
+    {
+      "idx": 15,
+      "id": 76,
+      "default_code": "P-C2-006",
+      "standard_price": 786.0
+    },
+    {
+      "idx": 16,
+      "id": 77,
+      "default_code": "P-C2-007",
+      "standard_price": 2574.24
+    },
+    {
+      "idx": 17,
+      "id": 78,
+      "default_code": "P-C2-008",
+      "standard_price": 399.46
+    },
+    {
+      "idx": 18,
+      "id": 79,
+      "default_code": "P-C2-009",
+      "standard_price": 537.03
+    },
+    {
+      "idx": 19,
+      "id": 80,
+      "default_code": "P-C2-010",
+      "standard_price": 932.79
+    },
+    {
+      "idx": 20,
+      "id": 81,
+      "default_code": "P-C3-001",
+      "standard_price": 107.2
+    },
+    {
+      "idx": 21,
+      "id": 82,
+      "default_code": "P-C3-002",
+      "standard_price": 1414.9
+    },
+    {
+      "idx": 22,
+      "id": 83,
+      "default_code": "P-C3-003",
+      "standard_price": 2595.32
+    },
+    {
+      "idx": 23,
+      "id": 84,
+      "default_code": "P-C3-004",
+      "standard_price": 1824.14
+    },
+    {
+      "idx": 24,
+      "id": 85,
+      "default_code": "P-C3-005",
+      "standard_price": 1329.6
+    },
+    {
+      "idx": 25,
+      "id": 86,
+      "default_code": "P-C3-006",
+      "standard_price": 618.32
+    },
+    {
+      "idx": 26,
+      "id": 87,
+      "default_code": "P-C3-007",
+      "standard_price": 2081.19
+    },
+    {
+      "idx": 27,
+      "id": 88,
+      "default_code": "P-C3-008",
+      "standard_price": 1744.12
+    },
+    {
+      "idx": 28,
+      "id": 89,
+      "default_code": "P-C3-009",
+      "standard_price": 977.31
+    },
+    {
+      "idx": 29,
+      "id": 90,
+      "default_code": "P-C3-010",
+      "standard_price": 703.05
+    },
+    {
+      "idx": 30,
+      "id": 91,
+      "default_code": "P-C4-001",
+      "standard_price": 514.7
+    },
+    {
+      "idx": 31,
+      "id": 92,
+      "default_code": "P-C4-002",
+      "standard_price": 246.01
+    },
+    {
+      "idx": 32,
+      "id": 93,
+      "default_code": "P-C4-003",
+      "standard_price": 1985.0
+    },
+    {
+      "idx": 33,
+      "id": 94,
+      "default_code": "P-C4-004",
+      "standard_price": 110.48
+    },
+    {
+      "idx": 34,
+      "id": 95,
+      "default_code": "P-C4-005",
+      "standard_price": 511.04
+    },
+    {
+      "idx": 35,
+      "id": 96,
+      "default_code": "P-C4-006",
+      "standard_price": 804.97
+    },
+    {
+      "idx": 36,
+      "id": 97,
+      "default_code": "P-C4-007",
+      "standard_price": 1453.86
+    },
+    {
+      "idx": 37,
+      "id": 98,
+      "default_code": "P-C4-008",
+      "standard_price": 3129.07
+    },
+    {
+      "idx": 38,
+      "id": 99,
+      "default_code": "P-C4-009",
+      "standard_price": 1628.49
+    },
+    {
+      "idx": 39,
+      "id": 100,
+      "default_code": "P-C4-010",
+      "standard_price": 546.36
+    },
+    {
+      "idx": 40,
+      "id": 101,
+      "default_code": "P-C5-001",
+      "standard_price": 1299.83
+    },
+    {
+      "idx": 41,
+      "id": 102,
+      "default_code": "P-C5-002",
+      "standard_price": 239.54
+    },
+    {
+      "idx": 42,
+      "id": 103,
+      "default_code": "P-C5-003",
+      "standard_price": 2360.26
+    },
+    {
+      "idx": 43,
+      "id": 104,
+      "default_code": "P-C5-004",
+      "standard_price": 612.82
+    },
+    {
+      "idx": 44,
+      "id": 105,
+      "default_code": "P-C5-005",
+      "standard_price": 394.8
+    },
+    {
+      "idx": 45,
+      "id": 106,
+      "default_code": "P-C5-006",
+      "standard_price": 406.62
+    },
+    {
+      "idx": 46,
+      "id": 107,
+      "default_code": "P-C5-007",
+      "standard_price": 664.43
+    },
+    {
+      "idx": 47,
+      "id": 108,
+      "default_code": "P-C5-008",
+      "standard_price": 501.3
+    },
+    {
+      "idx": 48,
+      "id": 109,
+      "default_code": "P-C5-009",
+      "standard_price": 4902.52
+    },
+    {
+      "idx": 49,
+      "id": 110,
+      "default_code": "P-C5-010",
+      "standard_price": 380.17
+    },
+    {
+      "idx": 50,
+      "id": 111,
+      "default_code": "P-C6-001",
+      "standard_price": 719.67
+    },
+    {
+      "idx": 51,
+      "id": 112,
+      "default_code": "P-C6-002",
+      "standard_price": 716.89
+    },
+    {
+      "idx": 52,
+      "id": 113,
+      "default_code": "P-C6-003",
+      "standard_price": 717.03
+    },
+    {
+      "idx": 53,
+      "id": 114,
+      "default_code": "P-C6-004",
+      "standard_price": 733.72
+    },
+    {
+      "idx": 54,
+      "id": 115,
+      "default_code": "P-C6-005",
+      "standard_price": 464.87
+    },
+    {
+      "idx": 55,
+      "id": 116,
+      "default_code": "P-C6-006",
+      "standard_price": 426.32
+    },
+    {
+      "idx": 56,
+      "id": 117,
+      "default_code": "P-C6-007",
+      "standard_price": 336.38
+    },
+    {
+      "idx": 57,
+      "id": 118,
+      "default_code": "P-C6-008",
+      "standard_price": 197.58
+    },
+    {
+      "idx": 58,
+      "id": 119,
+      "default_code": "P-C6-009",
+      "standard_price": 841.29
+    },
+    {
+      "idx": 59,
+      "id": 120,
+      "default_code": "P-C6-010",
+      "standard_price": 1616.15
+    }
+  ],
+  "vendor_by_idx": {
+    "0": 47,
+    "1": 48,
+    "2": 49,
+    "3": 50,
+    "4": 51,
+    "5": 52,
+    "6": 53,
+    "7": 54,
+    "8": 55,
+    "9": 56,
+    "10": 57,
+    "11": 58,
+    "12": 59,
+    "13": 60,
+    "14": 61,
+    "15": 62,
+    "16": 63,
+    "17": 64,
+    "18": 65,
+    "19": 66,
+    "20": 67,
+    "21": 68,
+    "22": 69,
+    "23": 70,
+    "24": 71,
+    "25": 72,
+    "26": 73,
+    "27": 74,
+    "28": 75,
+    "29": 76,
+    "30": 77,
+    "31": 78,
+    "32": 79,
+    "33": 80,
+    "34": 81,
+    "35": 82,
+    "36": 83,
+    "37": 84,
+    "38": 85,
+    "39": 86,
+    "40": 87,
+    "41": 88,
+    "42": 89,
+    "43": 90,
+    "44": 91,
+    "45": 92,
+    "46": 93,
+    "47": 94,
+    "48": 95,
+    "49": 96
+  },
+  "product_by_idx": {
+    "0": 61,
+    "1": 62,
+    "2": 63,
+    "3": 64,
+    "4": 65,
+    "5": 66,
+    "6": 67,
+    "7": 68,
+    "8": 69,
+    "9": 70,
+    "10": 71,
+    "11": 72,
+    "12": 73,
+    "13": 74,
+    "14": 75,
+    "15": 76,
+    "16": 77,
+    "17": 78,
+    "18": 79,
+    "19": 80,
+    "20": 81,
+    "21": 82,
+    "22": 83,
+    "23": 84,
+    "24": 85,
+    "25": 86,
+    "26": 87,
+    "27": 88,
+    "28": 89,
+    "29": 90,
+    "30": 91,
+    "31": 92,
+    "32": 93,
+    "33": 94,
+    "34": 95,
+    "35": 96,
+    "36": 97,
+    "37": 98,
+    "38": 99,
+    "39": 100,
+    "40": 101,
+    "41": 102,
+    "42": 103,
+    "43": 104,
+    "44": 105,
+    "45": 106,
+    "46": 107,
+    "47": 108,
+    "48": 109,
+    "49": 110,
+    "50": 111,
+    "51": 112,
+    "52": 113,
+    "53": 114,
+    "54": 115,
+    "55": 116,
+    "56": 117,
+    "57": 118,
+    "58": 119,
+    "59": 120
+  }
+}

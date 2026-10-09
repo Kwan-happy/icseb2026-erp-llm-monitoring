@@ -1,0 +1,67 @@
+{
+  "run_id": "eval_gpt_A_pv_2",
+  "started_utc": "2026-08-24T04:34:22.780806+00:00",
+  "finished_utc": "2026-08-24T05:12:35.861959+00:00",
+  "side": "eval",
+  "variant": "A",
+  "grains": [
+    "po",
+    "vendor"
+  ],
+  "model_key": "gpt",
+  "model_id": "gpt-5.4-mini-2026-03-17",
+  "snapshot_pinned": true,
+  "snapshot_note": "Provider exposes a dated model id; the id alone pins the version.",
+  "temperature": 0,
+  "seed": 20260808,
+  "seed_note": "A fixed seed was sent with every request. The provider describes it as best-effort, so it reduces run-to-run variation without guaranteeing identical replies.",
+  "json_mode": true,
+  "max_tokens": 1500,
+  "system_fingerprints": {
+    "(none reported)": 886
+  },
+  "response_models": {
+    "gpt-5.4-mini-2026-03-17": 886
+  },
+  "drift_note": "`system_fingerprints` counts the backend configuration the provider reported for each reply in this run. One value means every reply was served by the same configuration. More than one value means the backend changed during the run, and the run is not a single-configuration measurement. '(none reported)' means the provider does not expose the field, which is not evidence of stability. `response_models` records the model id the provider itself returned, which can differ from the requested id when an alias resolves to a dated snapshot.",
+  "prompt_files": {
+    "approval_matrix.txt": "c16a8f84b742c78a591c03f8a70dbf2f38b881dd853c8434a6776a956726af9b",
+    "company_profile.txt": "7a29381244795c4879741752f207a3ac2415970188b724d36c8c12c8d6820479",
+    "grain_audit_A.txt": "3a6448d42975fe4a4c9c8ea02fef9d58b2fb7ba2673899ffe1e722ba5c942a43",
+    "grain_audit_B.txt": "98981ed79a246b71dbb97931b77de2236aa9ea11669fa7b3358edf078db62049",
+    "grain_audit_C.txt": "3561d6d0423cb9308c95d1202ee2b2115b456086354f440573819b3a668b124a",
+    "grain_po.txt": "394a1e74250e3d5ccc95c8dba97d707523477c57edcba334eded6274a5db163a",
+    "grain_vendor.txt": "00587ca8003b7945a0f88c46ec514769040799057df5ccebce3368e3fce47d13",
+    "procurement_policy.txt": "ebc236b5eae758c4cddcaed3eb69f42ab43691edb328290dc5d7ba749cd237c4",
+    "risk_rules.txt": "b6ea34bed0495d218d55bd85df9b6ff7bdfe307a163c4f9d7596b8256fa8dd19"
+  },
+  "assembled_prompt_sha256": {
+    "po": "054e4da2381e7ccb1e704cc06805b47382bc6a6c31b7b6ed7b0535ed174964be",
+    "vendor": "067fcb735fd287ba978ac3956131ae92aa9216233c86a43adc9afb3915ded2d5"
+  },
+  "split_file": "_pipeline/out/split.json",
+  "split_sha256": "029c9cfbd06822fb2fd99f889bb7e8f1976c81cb07bbd69dbcd1993ec9cf7bf6",
+  "dataset_db": "Thesis_M2_r4_3",
+  "dataset_commit": "54ec541",
+  "git_head_at_run": "61baf988a1a279db5d5558b6a6e91b11a36b0a82",
+  "units_selected": 886,
+  "responses_logged": 886,
+  "rebuilt_from_log": false,
+  "counts": {
+    "ok": 886,
+    "unparsed": 0,
+    "api_error": 0,
+    "contract_violation": 0,
+    "wrong_grain_type": 0,
+    "recovered_from_log": 0
+  },
+  "recovery_note": "`recovered_from_log` counts replies that strict JSON parsing rejected and the comma-repair step then recovered. The logged reply is unchanged; only the derived verdict is re-read from it.",
+  "tokens": {
+    "prompt": 6800539,
+    "completion": 181012
+  },
+  "ground_truth_sent": false,
+  "flags_file": "flags.txt",
+  "flags_high_only_file": "flags_high_only.txt",
+  "operating_point": "flag = medium OR high; high-only reported as sensitivity"
+}

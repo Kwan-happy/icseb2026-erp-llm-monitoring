@@ -1,0 +1,57 @@
+{
+  "aggregation": "majority vote across repeated runs of one condition",
+  "rule": "a unit is flagged when strictly more than half of the runs covering its grain flagged it; the reported type is the most frequent type among the flagging runs; ties break alphabetically and are listed in full below",
+  "declared_k": 5,
+  "strict_k": true,
+  "source_runs": [
+    "eval_ds_A_pv_1",
+    "eval_ds_A_pv_2",
+    "eval_ds_A_pv_3",
+    "eval_ds_A_pv_4",
+    "eval_ds_A_pv_5"
+  ],
+  "condition": {
+    "model_id": "deepseek-v4-flash",
+    "side": "eval",
+    "split_sha256": "029c9cfbd06822fb2fd99f889bb7e8f1976c81cb07bbd69dbcd1993ec9cf7bf6",
+    "temperature": 0,
+    "max_tokens": 1500,
+    "json_mode": true,
+    "variant": "A",
+    "seed": null
+  },
+  "assembled_prompt_sha256": {
+    "po": "054e4da2381e7ccb1e704cc06805b47382bc6a6c31b7b6ed7b0535ed174964be",
+    "vendor": "067fcb735fd287ba978ac3956131ae92aa9216233c86a43adc9afb3915ded2d5"
+  },
+  "per_grain": {
+    "po": {
+      "voters": 5,
+      "units": 850,
+      "flagged": 89,
+      "source_runs": [
+        "eval_ds_A_pv_1",
+        "eval_ds_A_pv_2",
+        "eval_ds_A_pv_3",
+        "eval_ds_A_pv_4",
+        "eval_ds_A_pv_5"
+      ]
+    },
+    "vendor": {
+      "voters": 5,
+      "units": 36,
+      "flagged": 9,
+      "source_runs": [
+        "eval_ds_A_pv_1",
+        "eval_ds_A_pv_2",
+        "eval_ds_A_pv_3",
+        "eval_ds_A_pv_4",
+        "eval_ds_A_pv_5"
+      ]
+    }
+  },
+  "flags_written": 98,
+  "ties": [],
+  "tie_count": 0,
+  "flags_file": "_pipeline\\llm_out\\_majority_eval_ds_pv.flags"
+}

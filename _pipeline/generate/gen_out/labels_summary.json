@@ -1,0 +1,25 @@
+{
+  "labels_audit": {
+    "by_label": {
+      "null": 32,
+      "vendor_master_mod": 18
+    },
+    "total": 50
+  },
+  "labels_po": {
+    "by_label": {
+      "abnormal_amount": 40,
+      "approval_bypass": 40,
+      "duplicate_payment": 40,
+      "null": 1005
+    },
+    "total": 1125
+  },
+  "labels_vendor": {
+    "by_label": {
+      "null": 32,
+      "po_splitting": 18
+    },
+    "total": 50
+  }
+}

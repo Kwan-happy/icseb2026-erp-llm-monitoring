@@ -1,0 +1,5 @@
+_pipeline/config.json
+_pipeline/generate/gen_config.json
+_pipeline/.env
+__pycache__/
+*.pyc

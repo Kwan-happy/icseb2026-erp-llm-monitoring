@@ -1,0 +1,23 @@
+{
+  "run_at": "2026-08-13T17:04:43",
+  "db": "Thesis_M2_r4_3",
+  "params": {
+    "approval_threshold": 20000,
+    "splitting_window_days": 30,
+    "currency": "USD"
+  },
+  "counts": {
+    "po": 1125,
+    "vendor": 50,
+    "vendor_audit": 50
+  },
+  "validation": {
+    "po_pass": 1125,
+    "po_fail": 0,
+    "vendor_pass": 50,
+    "vendor_fail": 0,
+    "vendor_audit_pass": 50,
+    "vendor_audit_fail": 0
+  },
+  "failures": []
+}

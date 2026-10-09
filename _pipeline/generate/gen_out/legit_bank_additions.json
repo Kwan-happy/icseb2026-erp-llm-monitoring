@@ -1,0 +1,58 @@
+{
+ "47": {
+  "vendor_name": "Sirikul Trading Co., Ltd.",
+  "bank_id": 87,
+  "acc_number": "290-5663964-8",
+  "create_date": "2025-01-11",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "48": {
+  "vendor_name": "Bangkok Supply Co., Ltd.",
+  "bank_id": 88,
+  "acc_number": "805-8596464-0",
+  "create_date": "2025-01-13",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "49": {
+  "vendor_name": "Thonburi Industries Co., Ltd.",
+  "bank_id": 89,
+  "acc_number": "238-4367024-1",
+  "create_date": "2025-01-23",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "50": {
+  "vendor_name": "Chao Phraya Enterprises Co., Ltd.",
+  "bank_id": 90,
+  "acc_number": "770-8219025-8",
+  "create_date": "2025-01-22",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "51": {
+  "vendor_name": "Rattana Distribution Co., Ltd.",
+  "bank_id": 91,
+  "acc_number": "291-6225982-1",
+  "create_date": "2025-01-28",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "54": {
+  "vendor_name": "Ayutthaya Industries Co., Ltd.",
+  "bank_id": 92,
+  "acc_number": "661-4343998-1",
+  "create_date": "2025-01-21",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "57": {
+  "vendor_name": "Chatuchak Trading Co., Ltd.",
+  "bank_id": 93,
+  "acc_number": "478-7706869-3",
+  "create_date": "2025-01-14",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ },
+ "58": {
+  "vendor_name": "Rayong Supply Co., Ltd.",
+  "bank_id": 94,
+  "acc_number": "150-1687237-4",
+  "create_date": "2025-01-15",
+  "diversion_check": "no payment ever pointed to an ordinal>1 account"
+ }
+}

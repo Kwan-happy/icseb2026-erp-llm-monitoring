@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vendor_rollup.schema.json",
+  "title": "Vendor rollup document",
+  "description": "Vendor-level aggregate derived from PO contexts. Comparators only — the LLM decides splitting.",
+  "type": "object",
+  "required": ["vendor", "po_refs", "pos", "alltime", "splitting_view", "params"],
+  "properties": {
+    "vendor": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {"type": ["integer", "null"]},
+        "name": {"type": ["string", "null"]}
+      }
+    },
+    "po_refs": {"type": "array", "items": {"type": "string"}},
+    "pos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["po_number"],
+        "properties": {
+          "po_number": {"type": "string"},
+          "amount_total": {"type": ["number", "null"]},
+          "date_order": {"type": ["string", "null"]},
+          "state": {"type": ["string", "null"]},
+          "bills": {
+            "type": "array",
+            "description": "S1 support: this PO's bills (reference/amount/date facts only), so a bill re-billed against a DIFFERENT PO of the same vendor is visible at the vendor grain.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "doc_number": {"type": ["string", "null"]},
+                "ref": {"type": ["string", "null"], "description": "Supplier's own invoice number (distinct from Odoo's internal doc_number)."},
+                "amount_total": {"type": ["number", "null"]},
+                "date": {"type": ["string", "null"]}
+              }
+            }
+          }
+        }
+      }
+    },
+    "alltime": {
+      "type": "object",
+      "required": ["po_count", "avg_amount", "total"],
+      "properties": {
+        "po_count": {"type": "integer"},
+        "avg_amount": {"type": ["number", "null"]},
+        "total": {"type": ["number", "null"]}
+      }
+    },
+    "splitting_view": {
+      "type": "array",
+      "description": "Clusters of this vendor's POs within the splitting window (>=2 POs). Facts only.",
+      "items": {
+        "type": "object",
+        "required": ["po_numbers", "group_sum"],
+        "properties": {
+          "window_days": {"type": "integer"},
+          "po_numbers": {"type": "array", "items": {"type": "string"}},
+          "amounts": {"type": "array", "items": {"type": ["number", "null"]}},
+          "running_sum": {"type": "array", "items": {"type": ["number", "null"]}},
+          "group_sum": {"type": ["number", "null"]},
+          "approval_threshold": {"type": "number"}
+        }
+      }
+    },
+    "params": {
+      "type": "object",
+      "properties": {
+        "approval_threshold": {"type": "number"},
+        "splitting_window_days": {"type": "integer"}
+      }
+    }
+  }
+}

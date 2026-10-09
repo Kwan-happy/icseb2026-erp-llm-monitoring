@@ -1,0 +1,1168 @@
+{
+ "pos": {
+  "PO00025": {
+   "po_number": "P00754",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2613,
+   "duplicate_payment_id": 1303,
+   "target_total": 6887.61
+  },
+  "PO00141": {
+   "po_number": "P00045",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2615,
+   "duplicate_payment_id": 1304,
+   "target_total": 3822.52
+  },
+  "PO00155": {
+   "po_number": "P00408",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2617,
+   "duplicate_payment_id": 1305,
+   "target_total": 3049.96
+  },
+  "PO00183": {
+   "po_number": "P00060",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2619,
+   "duplicate_payment_id": 1306,
+   "target_total": 15357.21
+  },
+  "PO00198": {
+   "po_number": "P00800",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2621,
+   "duplicate_payment_id": null,
+   "target_total": 403.47
+  },
+  "PO00205": {
+   "po_number": "P00066",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2622,
+   "duplicate_payment_id": 1307,
+   "target_total": 6774.63
+  },
+  "PO00219": {
+   "po_number": "P00070",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2624,
+   "duplicate_payment_id": 1308,
+   "target_total": 2470.09
+  },
+  "PO00239": {
+   "po_number": "P00812",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2626,
+   "duplicate_payment_id": null,
+   "target_total": 5001.24
+  },
+  "PO00251": {
+   "po_number": "P00079",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2627,
+   "duplicate_payment_id": 1309,
+   "target_total": 5769.46
+  },
+  "PO00259": {
+   "po_number": "P00443",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2629,
+   "duplicate_payment_id": 1310,
+   "target_total": 8532.61
+  },
+  "PO00268": {
+   "po_number": "P00817",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2631,
+   "duplicate_payment_id": 1311,
+   "target_total": 7515.1
+  },
+  "PO00301": {
+   "po_number": "P00091",
+   "scenario": "duplicate_payment",
+   "variant": "cross_po",
+   "anchor_po_number": "P00248",
+   "duplicate_bill_id": 2686,
+   "duplicate_payment_id": 1336,
+   "target_total": 10684.21
+  },
+  "PO00337": {
+   "po_number": "P00104",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2635,
+   "duplicate_payment_id": null,
+   "target_total": 19985.16
+  },
+  "PO00348": {
+   "po_number": "P00109",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2636,
+   "duplicate_payment_id": 1313,
+   "target_total": 6822.66
+  },
+  "PO00353": {
+   "po_number": "P00110",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2638,
+   "duplicate_payment_id": 1314,
+   "target_total": 1117.82
+  },
+  "PO00469": {
+   "po_number": "P00502",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2640,
+   "duplicate_payment_id": 1315,
+   "target_total": 1847.5
+  },
+  "PO00494": {
+   "po_number": "P00508",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2642,
+   "duplicate_payment_id": 1316,
+   "target_total": 5845.13
+  },
+  "PO00528": {
+   "po_number": "P00175",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2644,
+   "duplicate_payment_id": null,
+   "target_total": 8598.15
+  },
+  "PO00537": {
+   "po_number": "P00179",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2645,
+   "duplicate_payment_id": null,
+   "target_total": 10613.52
+  },
+  "PO00574": {
+   "po_number": "P00535",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2646,
+   "duplicate_payment_id": 1317,
+   "target_total": 1107.61
+  },
+  "PO00601": {
+   "po_number": "P00923",
+   "scenario": "duplicate_payment",
+   "variant": "cross_po",
+   "anchor_po_number": "P00956",
+   "duplicate_bill_id": 2676,
+   "duplicate_payment_id": 1331,
+   "target_total": 14129.74
+  },
+  "PO00657": {
+   "po_number": "P00559",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2650,
+   "duplicate_payment_id": 1319,
+   "target_total": 832.56
+  },
+  "PO00777": {
+   "po_number": "P00249",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2652,
+   "duplicate_payment_id": 1320,
+   "target_total": 3925.25
+  },
+  "PO00798": {
+   "po_number": "P00254",
+   "scenario": "duplicate_payment",
+   "variant": "cross_po",
+   "anchor_po_number": "P00213",
+   "duplicate_bill_id": 2684,
+   "duplicate_payment_id": 1335,
+   "target_total": 1121.25
+  },
+  "PO00820": {
+   "po_number": "P00262",
+   "scenario": "duplicate_payment",
+   "variant": "cross_po",
+   "anchor_po_number": "P00880",
+   "duplicate_bill_id": 2678,
+   "duplicate_payment_id": 1332,
+   "target_total": 8707.24
+  },
+  "PO00873": {
+   "po_number": "P01003",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2658,
+   "duplicate_payment_id": null,
+   "target_total": 6095.27
+  },
+  "PO00887": {
+   "po_number": "P00281",
+   "scenario": "duplicate_payment",
+   "variant": "cross_po",
+   "anchor_po_number": "P00242",
+   "duplicate_bill_id": 2680,
+   "duplicate_payment_id": 1333,
+   "target_total": 741.76
+  },
+  "PO00964": {
+   "po_number": "P01031",
+   "scenario": "duplicate_payment",
+   "variant": "rounding_delta",
+   "duplicate_bill_id": 2661,
+   "duplicate_payment_id": 1324,
+   "target_total": 2513.51
+  },
+  "PO00978": {
+   "po_number": "P00662",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2663,
+   "duplicate_payment_id": 1325,
+   "target_total": 1425.81
+  },
+  "PO01007": {
+   "po_number": "P00321",
+   "scenario": "duplicate_payment",
+   "variant": "cross_po",
+   "anchor_po_number": "P00678",
+   "duplicate_bill_id": 2682,
+   "duplicate_payment_id": 1334,
+   "target_total": 9790.61
+  },
+  "PO01029": {
+   "po_number": "P00326",
+   "scenario": "duplicate_payment",
+   "variant": "bill_only",
+   "duplicate_bill_id": 2667,
+   "duplicate_payment_id": null,
+   "target_total": 3095.85
+  },
+  "PO01067": {
+   "po_number": "P00339",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2668,
+   "duplicate_payment_id": 1327,
+   "target_total": 2062.9
+  },
+  "PO01069": {
+   "po_number": "P01063",
+   "scenario": "duplicate_payment",
+   "variant": "identical",
+   "duplicate_bill_id": 2670,
+   "duplicate_payment_id": 1328,
+   "target_total": 6082.68
+  },
+  "PO01082": {
+   "po_number": "P00690",
+   "scenario": "duplicate_payment",
+   "variant": "different_date",
+   "duplicate_bill_id": 2672,
+   "duplicate_payment_id": 1329,
+   "target_total": 3152.58
+  }
+ },
+ "audit": {
+  "0": {
+   "vendor_id": 47,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 47,
+     "new_value": "200 Bangna-Trad Rd.",
+     "at": "2025-05-02"
+    }
+   ]
+  },
+  "1": {
+   "vendor_id": 48,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 48,
+     "new_value": "+66-2-701-2003",
+     "at": "2025-09-23"
+    }
+   ]
+  },
+  "2": {
+   "vendor_id": 49,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 49,
+     "new_value": "202 Bangna-Trad Rd.",
+     "at": "2025-08-21"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 33,
+     "new_value": "370-1397399-2",
+     "at": "2025-03-01"
+    }
+   ]
+  },
+  "3": {
+   "vendor_id": 50,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 50,
+     "new_value": "+66-2-703-2009",
+     "at": "2025-01-08"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 34,
+     "new_value": "223-7903474-2",
+     "at": "2025-01-15"
+    }
+   ]
+  },
+  "4": {
+   "vendor_id": 51,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 51,
+     "new_value": "204 Bangna-Trad Rd.",
+     "at": "2025-10-08"
+    }
+   ]
+  },
+  "5": {
+   "vendor_id": 52,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 52,
+     "new_value": "+66-2-705-2015",
+     "at": "2025-04-06"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 36,
+     "original_value": "105-1066685-5",
+     "tampered_value": "244-8860681-8",
+     "at": "2025-08-05",
+     "revert_at": "2025-08-11"
+    }
+   ]
+  },
+  "6": {
+   "vendor_id": 53,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 53,
+     "new_value": "206 Bangna-Trad Rd.",
+     "at": "2025-05-16"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 37,
+     "original_value": "106-1080022-6",
+     "tampered_value": "308-2596886-2",
+     "at": "2025-06-01",
+     "revert_at": "2025-06-06"
+    }
+   ]
+  },
+  "7": {
+   "vendor_id": 54,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 54,
+     "new_value": "+66-2-707-2021",
+     "at": "2025-10-20"
+    }
+   ]
+  },
+  "8": {
+   "vendor_id": 55,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 55,
+     "new_value": "208 Bangna-Trad Rd.",
+     "at": "2025-02-19"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 39,
+     "original_value": "108-1106696-8",
+     "tampered_value": "412-6415884-5",
+     "at": "2025-05-16",
+     "revert_at": "2025-05-19"
+    }
+   ]
+  },
+  "9": {
+   "vendor_id": 56,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 56,
+     "new_value": "+66-2-709-2027",
+     "at": "2025-04-01"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 40,
+     "original_value": "109-1120033-9",
+     "tampered_value": "896-7838663-0",
+     "at": "2025-07-10",
+     "revert_at": "2025-07-17"
+    }
+   ]
+  },
+  "10": {
+   "vendor_id": 57,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 57,
+     "new_value": "210 Bangna-Trad Rd.",
+     "at": "2025-11-06"
+    }
+   ]
+  },
+  "11": {
+   "vendor_id": 58,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 58,
+     "new_value": "+66-2-711-2033",
+     "at": "2025-09-06"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 42,
+     "new_value": "439-7495637-4",
+     "at": "2025-03-28"
+    }
+   ]
+  },
+  "12": {
+   "vendor_id": 59,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 59,
+     "new_value": "212 Bangna-Trad Rd.",
+     "at": "2025-09-11"
+    }
+   ]
+  },
+  "13": {
+   "vendor_id": 60,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 60,
+     "new_value": "+66-2-713-2039",
+     "at": "2025-09-12"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 44,
+     "original_value": "113-1173381-3",
+     "tampered_value": "730-8375570-7",
+     "at": "2025-05-06",
+     "revert_at": "2025-05-09"
+    }
+   ]
+  },
+  "14": {
+   "vendor_id": 61,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 61,
+     "new_value": "214 Bangna-Trad Rd.",
+     "at": "2025-12-30"
+    }
+   ]
+  },
+  "15": {
+   "vendor_id": 62,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 62,
+     "new_value": "+66-2-715-2045",
+     "at": "2025-04-11"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 46,
+     "new_value": "172-5430611-6",
+     "at": "2025-02-15"
+    }
+   ]
+  },
+  "16": {
+   "vendor_id": 63,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 63,
+     "new_value": "216 Bangna-Trad Rd.",
+     "at": "2025-03-30"
+    }
+   ]
+  },
+  "17": {
+   "vendor_id": 64,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 64,
+     "new_value": "+66-2-717-2051",
+     "at": "2025-08-22"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 48,
+     "new_value": "486-5764849-2",
+     "at": "2025-02-17"
+    }
+   ]
+  },
+  "18": {
+   "vendor_id": 65,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 65,
+     "new_value": "218 Bangna-Trad Rd.",
+     "at": "2025-04-27"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 49,
+     "original_value": "118-1240066-8",
+     "tampered_value": "155-4971541-3",
+     "at": "2025-10-26",
+     "revert_at": "2025-10-29"
+    }
+   ]
+  },
+  "19": {
+   "vendor_id": 66,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 66,
+     "new_value": "+66-2-719-2057",
+     "at": "2025-01-30"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 50,
+     "new_value": "632-8954632-7",
+     "at": "2025-03-02"
+    }
+   ]
+  },
+  "20": {
+   "vendor_id": 67,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 67,
+     "new_value": "220 Bangna-Trad Rd.",
+     "at": "2025-12-07"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 51,
+     "original_value": "120-1266740-0",
+     "tampered_value": "252-6792506-4",
+     "at": "2025-02-11",
+     "revert_at": "2025-02-16"
+    }
+   ]
+  },
+  "21": {
+   "vendor_id": 68,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 68,
+     "new_value": "+66-2-721-2063",
+     "at": "2025-07-06"
+    }
+   ]
+  },
+  "22": {
+   "vendor_id": 69,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 69,
+     "new_value": "222 Bangna-Trad Rd.",
+     "at": "2025-11-09"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 53,
+     "original_value": "122-1293414-2",
+     "tampered_value": "848-1586479-3",
+     "at": "2025-08-30",
+     "revert_at": "2025-09-05"
+    }
+   ]
+  },
+  "23": {
+   "vendor_id": 70,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 70,
+     "new_value": "+66-2-723-2069",
+     "at": "2025-11-12"
+    }
+   ]
+  },
+  "24": {
+   "vendor_id": 71,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 71,
+     "new_value": "224 Bangna-Trad Rd.",
+     "at": "2025-11-06"
+    }
+   ]
+  },
+  "25": {
+   "vendor_id": 72,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 72,
+     "new_value": "+66-2-725-2075",
+     "at": "2025-06-12"
+    }
+   ]
+  },
+  "26": {
+   "vendor_id": 73,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 73,
+     "new_value": "226 Bangna-Trad Rd.",
+     "at": "2025-06-17"
+    }
+   ]
+  },
+  "27": {
+   "vendor_id": 74,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 74,
+     "new_value": "+66-2-727-2081",
+     "at": "2025-03-14"
+    }
+   ]
+  },
+  "28": {
+   "vendor_id": 75,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 75,
+     "new_value": "228 Bangna-Trad Rd.",
+     "at": "2025-11-01"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 59,
+     "new_value": "302-3637042-8",
+     "at": "2025-02-28"
+    }
+   ]
+  },
+  "29": {
+   "vendor_id": 76,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 76,
+     "new_value": "+66-2-729-2087",
+     "at": "2025-09-16"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 60,
+     "original_value": "129-1386773-9",
+     "tampered_value": "469-7507954-6",
+     "at": "2025-10-01",
+     "revert_at": "2025-10-06"
+    }
+   ]
+  },
+  "30": {
+   "vendor_id": 77,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 77,
+     "new_value": "230 Bangna-Trad Rd.",
+     "at": "2025-08-08"
+    }
+   ]
+  },
+  "31": {
+   "vendor_id": 78,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 78,
+     "new_value": "+66-2-731-2093",
+     "at": "2025-11-09"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 62,
+     "original_value": "131-1413447-1",
+     "tampered_value": "537-4721370-8",
+     "at": "2025-03-11",
+     "revert_at": "2025-03-18"
+    }
+   ]
+  },
+  "32": {
+   "vendor_id": 79,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 79,
+     "new_value": "232 Bangna-Trad Rd.",
+     "at": "2025-09-08"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 63,
+     "original_value": "132-1426784-2",
+     "tampered_value": "325-2079565-2",
+     "at": "2025-11-27",
+     "revert_at": "2025-11-30"
+    }
+   ]
+  },
+  "33": {
+   "vendor_id": 80,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 80,
+     "new_value": "+66-2-733-2099",
+     "at": "2025-01-30"
+    },
+    {
+     "kind": "tamper",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 64,
+     "original_value": "133-1440121-3",
+     "tampered_value": "761-8035674-5",
+     "at": "2025-04-30",
+     "revert_at": "2025-05-06"
+    }
+   ]
+  },
+  "34": {
+   "vendor_id": 81,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 81,
+     "new_value": "234 Bangna-Trad Rd.",
+     "at": "2025-12-30"
+    }
+   ]
+  },
+  "35": {
+   "vendor_id": 82,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 82,
+     "new_value": "+66-2-735-2105",
+     "at": "2025-04-17"
+    },
+    {
+     "kind": "bank_add",
+     "model": "res.partner.bank",
+     "bank_id": 81,
+     "new_value": "475-8587205-1",
+     "at": "2025-03-18"
+    }
+   ]
+  },
+  "36": {
+   "vendor_id": 83,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 83,
+     "new_value": "236 Bangna-Trad Rd.",
+     "at": "2025-03-15"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 67,
+     "new_value": "900-6526245-2",
+     "at": "2025-02-26"
+    }
+   ]
+  },
+  "37": {
+   "vendor_id": 84,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 84,
+     "new_value": "+66-2-737-2111",
+     "at": "2025-08-22"
+    }
+   ]
+  },
+  "38": {
+   "vendor_id": 85,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 85,
+     "new_value": "238 Bangna-Trad Rd.",
+     "at": "2025-10-05"
+    }
+   ]
+  },
+  "39": {
+   "vendor_id": 86,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 86,
+     "new_value": "+66-2-739-2117",
+     "at": "2025-05-03"
+    }
+   ]
+  },
+  "40": {
+   "vendor_id": 87,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 87,
+     "new_value": "240 Bangna-Trad Rd.",
+     "at": "2025-06-14"
+    },
+    {
+     "kind": "bank_add",
+     "model": "res.partner.bank",
+     "bank_id": 82,
+     "new_value": "217-7436354-7",
+     "at": "2025-08-27"
+    }
+   ]
+  },
+  "41": {
+   "vendor_id": 88,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 88,
+     "new_value": "+66-2-741-2123",
+     "at": "2025-01-05"
+    }
+   ]
+  },
+  "42": {
+   "vendor_id": 89,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 89,
+     "new_value": "242 Bangna-Trad Rd.",
+     "at": "2025-06-05"
+    }
+   ]
+  },
+  "43": {
+   "vendor_id": 90,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 90,
+     "new_value": "+66-2-743-2129",
+     "at": "2025-09-06"
+    },
+    {
+     "kind": "legit",
+     "model": "res.partner.bank",
+     "field": "acc_number",
+     "res_id": 74,
+     "new_value": "816-9687382-0",
+     "at": "2025-01-16"
+    }
+   ]
+  },
+  "44": {
+   "vendor_id": 91,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 91,
+     "new_value": "244 Bangna-Trad Rd.",
+     "at": "2025-11-07"
+    }
+   ]
+  },
+  "45": {
+   "vendor_id": 92,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 92,
+     "new_value": "+66-2-745-2135",
+     "at": "2025-02-24"
+    },
+    {
+     "kind": "bank_add",
+     "model": "res.partner.bank",
+     "bank_id": 83,
+     "new_value": "530-4106504-0",
+     "at": "2025-01-29"
+    }
+   ]
+  },
+  "46": {
+   "vendor_id": 93,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 93,
+     "new_value": "246 Bangna-Trad Rd.",
+     "at": "2025-03-18"
+    },
+    {
+     "kind": "bank_add",
+     "model": "res.partner.bank",
+     "bank_id": 84,
+     "new_value": "171-9393765-3",
+     "at": "2025-05-02"
+    }
+   ]
+  },
+  "47": {
+   "vendor_id": 94,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 94,
+     "new_value": "+66-2-747-2141",
+     "at": "2025-10-28"
+    },
+    {
+     "kind": "bank_add",
+     "model": "res.partner.bank",
+     "bank_id": 85,
+     "new_value": "903-3562734-4",
+     "at": "2025-04-29"
+    }
+   ]
+  },
+  "48": {
+   "vendor_id": 95,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "street",
+     "res_id": 95,
+     "new_value": "248 Bangna-Trad Rd.",
+     "at": "2025-08-31"
+    },
+    {
+     "kind": "bank_add",
+     "model": "res.partner.bank",
+     "bank_id": 86,
+     "new_value": "119-8966938-2",
+     "at": "2025-05-28"
+    }
+   ]
+  },
+  "49": {
+   "vendor_id": 96,
+   "edits": [
+    {
+     "kind": "legit",
+     "model": "res.partner",
+     "field": "phone",
+     "res_id": 96,
+     "new_value": "+66-2-749-2147",
+     "at": "2025-09-20"
+    }
+   ]
+  }
+ }
+}

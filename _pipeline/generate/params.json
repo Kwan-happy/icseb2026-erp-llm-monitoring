@@ -1,0 +1,110 @@
+{
+  "_comment": "Synthetic-dataset generation parameters. Governs the NORMAL background POs only; anomalies are injected separately per anomaly_spec.md. Fixed constants (approval_threshold=20000 USD, splitting_window_days=30, seed=123) mirror _pipeline/config.json and must agree. Design = bottom-up: sample a vendor set + a product catalog (each product has a standard_price), then build each PO from lines so amount_total = sum(qty * unit_price) EMERGES. Calibrated so median PO amount ~= USD 5000, right-skewed, with only ~5-10% of normals above the 20000 threshold. Every distribution is machine-readable (dist name + explicit numeric params), not prose. See params_derivation.md for the calibration arithmetic.",
+
+  "seed": 123,
+  "currency": "USD",
+
+  "fixed_constants": {
+    "_comment": "Echoed from _pipeline/config.json / anomaly_spec.md for provenance. NOT redefined here - the generator reads the authoritative copies from config.json; these are for the record only.",
+    "approval_threshold": 20000,
+    "splitting_window_days": 30,
+    "tax": "none (0%)",
+    "tax_note": "POs are generated TAX-FREE so amount_untaxed == amount_total. The 20000 threshold compares against the UNTAXED amount; the amount calibration below (sum of qty*unit_price) is untaxed, matching what the pipeline baselines and Odoo's approval trigger see."
+  },
+
+  "generation_period": {
+    "_comment": "12-month window in 2025. Per-vendor inter-arrivals (see order_timing) are drawn across this window so scenario-2 splitting clusters can form inside a 30-day sub-window.",
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31"
+  },
+
+  "counts": {
+    "_comment": "n_vendors/n_products chosen for an SME: a handful of vendors, a modest parts/goods catalog. n_vendors=50 and total_normal_pos=1000 give enough positives on the per-vendor S2 and per-audit S3 grains for the eval split.",
+    "total_normal_pos": 1000,
+    "n_vendors": 50,
+    "n_products": 60
+  },
+
+  "product_standard_price": {
+    "_comment": "Per-product unit cost (standard_price), sampled once to build the catalog. Log-normal, right-skewed. median=700 USD, sigma_log=0.85 (natural-log sd). SME B2B rescale of Online Retail's ~$2.10 median unit price (goods, not consumer trinkets); sigma tamed vs development-bank ~2.2. Combined with lines/qty below, the emergent PO amount hits median~4890, p90~15800, ~5.6% above 20000 (Monte-Carlo, seed 123, 300k draws). See derivation note.",
+    "dist": "lognormal",
+    "median": 700,
+    "sigma_log": 0.85,
+    "min": 15
+  },
+
+  "lines_per_po": {
+    "_comment": "Number of distinct product lines on a PO. Small and right-skewed for B2B (NOT retail-basket sizes). Zero-truncated Poisson lambda=2.2 gives median ~2, mean ~2.5, clipped to [1,10]. Reference: design target 'median ~3, max ~10' vs Online Retail median 16 (retail, not imported).",
+    "dist": "poisson_truncated",
+    "lambda": 2.2,
+    "min": 1,
+    "max": 10
+  },
+
+  "qty_per_line": {
+    "_comment": "Units per line. Small right-skewed integer. Zero-truncated Poisson lambda=3 gives median ~3, clipped to [1,20]. Reference: matches Online Retail qty/line MEDIAN (3); the heavy retail tail (p90 24) is deliberately NOT reproduced - truncPoisson(3) has p90 ~5, a tighter B2B-plausible tail. Only the median/shape is borrowed.",
+    "dist": "poisson_truncated",
+    "lambda": 3,
+    "min": 1,
+    "max": 20
+  },
+
+  "unit_price_noise": {
+    "_comment": "Multiplier applied to standard_price to set a normal line's unit_price: unit_price = standard_price * factor. Tight normal around 1.0 so line_unit_price_vs_cost_ratio ~= 1 for normals (scenario 5 needs a clean baseline to deviate from). Clipped to avoid negatives/outliers.",
+    "dist": "normal",
+    "mean": 1.0,
+    "sd": 0.03,
+    "clip_min": 0.9,
+    "clip_max": 1.1
+  },
+
+  "vendor_assignment": {
+    "_comment": "Which vendor each PO is assigned to. Concentration via normalized FINITE weights proportional to 1/rank^s (rank 1..n), sampled as a categorical over the n vendors - NOT numpy.random.zipf (which requires s>1 and is unbounded). s=0.6 over 50 vendors -> top vendor ~10.0% of POs, top 3 ~21.7%, tail vendors ~1.0% each: a few frequent + many occasional, faithful to ADB's finding that SME vendors are fairly even (NOT 80/20 Pareto, NOT the ADB batch-award artifact). Frequent vendors still get enough volume for scenario-2 clusters and vendor baselines (top vendor ~100 POs at total_normal_pos=1000). At s=0.6 over 50 vendors the concentration stays 'fairly even'.",
+    "dist": "finite_zipf_normalized",
+    "weight_formula": "1 / rank^s",
+    "s": 0.6,
+    "n": 50,
+    "target_top_vendor_share": 0.100,
+    "target_top3_vendor_share": 0.217
+  },
+
+  "vendor_product_affinity": {
+    "_comment": "Product<->vendor mapping, kept deliberately simple: partition the 60-product catalog into category blocks, assign each vendor a primary category, and let each vendor draw its lines mostly (in_category_prob) from its own category with occasional cross-category buys. This makes vendor average amounts differ (realistic) without a full supplier-category model.",
+    "n_categories": 6,
+    "products_per_category": 10,
+    "vendor_primary_category": "one_per_vendor_round_robin",
+    "in_category_prob": 0.8
+  },
+
+  "order_timing": {
+    "_comment": "Per-vendor PO dates placed across generation_period so each vendor's total equals its vendor_assignment allocation of the total_normal_pos. Inter-arrival is exponential with a PER-VENDOR mean = generation_period_days / (that vendor's allocated PO count) - spacing is governed by the count, NOT a single global constant. (With 1000 POs over 50 vendors in 365 days the average vendor holds ~20 POs -> ~18-day mean spacing; frequent vendors far denser (~100 POs), tail vendors sparser (~10).) This makes the counts add up AND guarantees frequent vendors accumulate several POs within a 30-day window for legitimate clustering / the scenario-2 sub-threshold hard negative. The ADB ~75% same-day batch artifact is deliberately excluded so it cannot contaminate scenario-2/4 timing signals.",
+    "dist": "exponential_per_vendor",
+    "mean_days_formula": "generation_period_days / vendor_po_count",
+    "per": "vendor"
+  },
+
+  "process_latency": {
+    "_comment": "Hand-set SME-plausible process-step latencies, jittered per PO so that step gaps do not take a few fixed values and confirm-time is not a direct readout of rfq_sent. NOT calibrated from any reference dataset - same epistemic status as unit_price_noise above: a modeling choice, not a fitted statistic. Sampled per-PO in build_normal.py via a seeded RNG keyed on (seed, po_key, step-salt) rather than here in PLAN - deterministic and reproducible. order_to_rfq_hours/rfq_to_confirm_hours (RFQ path) and order_to_confirm_hours_no_rfq (skip-RFQ path) are drawn INDEPENDENTLY so the confirm-time distribution does not split into exactly two values by rfq_sent. confirm_to_approve_hours_fast is the scenario-4 fast_approval compressed draw (anomaly_spec.md S4 conspicuousness clause); confirm_to_approve_hours is the ordinary draw used for every other PO including the ~5-10% of normals that land above the threshold, generous enough on its own that a material share of those still land under 4 hours by chance. All 'min' floors are strictly positive so the created<=sent<=confirmed<=approved<=received<=billed<=paid ordering invariant holds by construction (each step is order_ts + a positive delta), and every stage still passes through build_normal.py's existing _clamp() so no tail crosses into 2026.",
+    "order_base_time": {"dist": "normal_clipped", "mean_hour": 10.0, "sd_hours": 2.2, "min_hour": 7.5, "max_hour": 18.5},
+    "order_to_rfq_hours": {"dist": "lognormal_clipped", "median": 1.5, "sigma_log": 0.7, "min": 0.1, "max": 24},
+    "rfq_to_confirm_hours": {"dist": "lognormal_clipped", "median": 4.0, "sigma_log": 0.8, "min": 0.2, "max": 72},
+    "order_to_confirm_hours_no_rfq": {"dist": "lognormal_clipped", "median": 2.5, "sigma_log": 0.9, "min": 0.1, "max": 48},
+    "confirm_to_approve_hours": {"dist": "lognormal_clipped", "median": 10.0, "sigma_log": 1.0, "min": 0.1, "max": 120},
+    "confirm_to_approve_hours_fast": {"dist": "lognormal_clipped", "median": 0.75, "sigma_log": 0.5, "min": 0.05, "max": 3.5},
+    "approve_to_receipt_days": {"dist": "lognormal_clipped", "median": 1.5, "sigma_log": 0.6, "min": 0.1, "max": 14},
+    "receipt_to_bill_days": {"dist": "lognormal_clipped", "median": 1.2, "sigma_log": 0.6, "min": 0.1, "max": 14},
+    "bill_to_payment_days": {"dist": "lognormal_clipped", "median": 4.0, "sigma_log": 0.5, "min": 0.5, "max": 30},
+    "bill_to_payment_days_dup_fast": {"_comment": "Scenario-1 (duplicate_payment) second/duplicate payment. Drawn from the SAME lognormal family as the normal bill_to_payment_days, shifted toward the fast end as a TENDENCY only (mirrors confirm_to_approve_hours_fast's relationship to confirm_to_approve_hours) - a duplicate bill plausibly gets paid a bit sooner (less scrutiny), but it must not be a constant and its range must overlap the normal population's substantially, or the offset alone becomes a perfect S1 detector. Verified overlapping - see params_derivation.md §3b.", "dist": "lognormal_clipped", "median": 2.5, "sigma_log": 0.55, "min": 0.3, "max": 14},
+    "down_payment_to_final_days": {"_comment": "The gap between the S1 down-payment-then-final hard negative's two LEGITIMATE bills (anomaly_spec §6). It is drawn, not constant, so the gap alone cannot identify the S1 hard negatives. A real down-payment-to-final gap plausibly ranges from a few days to a few weeks.", "dist": "lognormal_clipped", "median": 10.0, "sigma_log": 0.6, "min": 1.0, "max": 45}
+  },
+
+  "calibration_refs": {
+    "_comment": "SHAPE ONLY - no value is calibrated from the reference data. The public datasets do NOT represent SME B2B procurement, so NONE of their magnitudes is imported: every scale here is a hand-set SME design choice anchored to the 20000 threshold (median PO ~5000, product ~700 - NOT Online Retail's $2.10/$304, NOT ADB's $48,700). Online Retail II corroborates only the amount/line/qty SHAPE (right-skew, small integer lines); ADB corroborates only vendor concentration + timing shape (fairly even, not Pareto). Face-validity, not calibration.",
+    "product_standard_price": "Online Retail II unit-price right-skew (median $2.10), rescaled up to SME B2B goods (median $700); log sigma tamed to SME (~0.85) not development-bank (~2.2).",
+    "lines_per_po": "Online Retail II lines/invoice shape, reduced to B2B (median ~2-3, max 10) by design; retail median 16 NOT imported.",
+    "qty_per_line": "Online Retail II qty/line median (3) borrowed; heavy retail tail (p90 24) intentionally compressed to a B2B-plausible p90 ~5.",
+    "amount_total_emergent": "Target median ~5000, p90 ~15000-19000, ~5-10% above 20000; log-spread consistent with Online Retail invoice p90/median ~3.1 (natural-log sigma ~0.89).",
+    "vendor_assignment": "ADB vendor concentration (a few frequent + many occasional; NOT Pareto, placeholder pseudo-vendors stripped).",
+    "order_timing": "ADB inter-arrival shape (median ~12d / mean ~34d) informs a plain per-vendor cadence; actual spacing is count-governed (window / vendor_po_count) so the total_normal_pos total is honoured; same-day batch artifact excluded."
+  }
+}

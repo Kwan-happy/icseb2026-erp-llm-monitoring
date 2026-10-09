@@ -1,0 +1,21 @@
+GRAIN: vendor
+
+The value of "grain" is "vendor". The value of "unit_id" is the vendor id.
+
+Allowed anomaly types for this grain: "po_splitting", or null.
+
+PO_SPLITTING
+
+The record groups this vendor's orders into time windows. For each window you are given the individual order amounts, the running total as orders accumulate, and the combined total for the window.
+
+Ask a counterfactual question of each window: had these orders been raised as one purchase, would that purchase have required the higher-level approval that none of them individually required? Where the answer is yes, ask whether they plausibly could have been one purchase — the same vendor, close together in time, and goods or services of a kind normally bought at once.
+
+Judge each window on its own merits. A vendor may have many unremarkable windows and one that fits this pattern; the unremarkable ones do not excuse it.
+
+What the pattern looks like when it is real: the orders sit close under the approval requirement without reaching it.
+
+Evidence supporting a finding: several orders that each stop close beneath the approval requirement while their combination clearly passes it; orders close together in time; goods or services of a kind that would normally be bought at once; a vendor that does not usually receive orders at this frequency or at this value.
+
+Evidence against a finding: a single ordinary purpose that accounts for the whole cluster, such as arrangements made for several different people within the same period, or a standing supply agreement drawn down in instalments. Ordinary purchasing produces clusters too, and a cluster with a plain explanation is not structuring.
+
+A combined total above the threshold is not, by itself, evidence of splitting. Many vendors cross it through entirely ordinary business. What distinguishes splitting is that the approval requirement was within reach and was not reached.

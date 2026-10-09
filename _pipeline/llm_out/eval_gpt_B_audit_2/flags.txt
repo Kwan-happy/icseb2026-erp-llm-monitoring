@@ -1,0 +1,10 @@
+audit|52|vendor_master_mod
+audit|53|vendor_master_mod
+audit|64|vendor_master_mod
+audit|65|vendor_master_mod
+audit|67|vendor_master_mod
+audit|69|vendor_master_mod
+audit|78|vendor_master_mod
+audit|80|vendor_master_mod
+audit|85|vendor_master_mod
+audit|90|vendor_master_mod

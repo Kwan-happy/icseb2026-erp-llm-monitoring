@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "po_context.schema.json",
+  "title": "PO context document",
+  "description": "One procurement Purchase-Order context handed to the LLM (Layer 3). Facts + neutral comparators only: no rule verdicts.",
+  "type": "object",
+  "required": ["po_identity", "lines", "receipts", "bills", "payments", "timeline", "baselines", "data_quality", "ground_truth"],
+  "properties": {
+    "po_identity": {
+      "type": "object",
+      "required": ["po_number", "state", "vendor", "buyer"],
+      "properties": {
+        "po_number": {"type": "string"},
+        "state": {"type": "string"},
+        "company_id": {"type": ["integer", "null"]},
+        "vendor": {
+          "type": "object",
+          "required": ["id"],
+          "properties": {
+            "id": {"type": ["integer", "null"]},
+            "name": {"type": ["string", "null"]},
+            "commercial_partner_id": {"type": ["integer", "null"]},
+            "create_date": {"type": ["string", "null"], "description": "S4 support: this vendor's res.partner creation date, so a brand-new vendor is observable."}
+          }
+        },
+        "buyer": {
+          "type": "object",
+          "required": ["user_id"],
+          "properties": {
+            "user_id": {"type": ["integer", "null"]},
+            "name": {"type": ["string", "null"]}
+          }
+        },
+        "amount_total": {"type": ["number", "null"]},
+        "date_order": {"type": ["string", "null"]},
+        "date_approve": {"type": ["string", "null"]},
+        "self_approval": {"type": ["boolean", "null"]},
+        "rfq_sent_skipped": {"type": ["boolean", "null"]}
+      }
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["line_id"],
+        "properties": {
+          "line_id": {"type": "integer"},
+          "product_id": {"type": ["integer", "null"]},
+          "product": {"type": ["string", "null"]},
+          "qty": {"type": ["number", "null"]},
+          "unit_price": {"type": ["number", "null"]},
+          "price_subtotal": {"type": ["number", "null"]},
+          "qty_received": {"type": ["number", "null"]},
+          "qty_invoiced": {"type": ["number", "null"]},
+          "standard_price": {"type": ["number", "null"]},
+          "vendor_prior_avg_unit_price": {"type": ["number", "null"], "description": "S5 support: this vendor's average unit price for this exact product on strictly-earlier POs only (null = no prior sale of this product by this vendor)."}
+        }
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "picking": {"type": ["string", "null"]},
+          "state": {"type": ["string", "null"]},
+          "linked_via": {"type": "string", "enum": ["spine", "text"]}
+        }
+      }
+    },
+    "bills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["doc_number", "move_type", "linked_via"],
+        "properties": {
+          "doc_number": {"type": ["string", "null"]},
+          "ref": {"type": ["string", "null"], "description": "Supplier's own invoice number (distinct from Odoo's internal doc_number)."},
+          "move_type": {"type": "string", "enum": ["in_invoice", "in_receipt", "in_refund"]},
+          "amount_total": {"type": ["number", "null"]},
+          "payment_state": {"type": ["string", "null"]},
+          "linked_via": {"type": "string", "enum": ["spine", "text"]},
+          "postings": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {"type": ["string", "null"]},
+                "account": {"type": ["string", "null"]},
+                "debit": {"type": ["number", "null"]},
+                "credit": {"type": ["number", "null"]}
+              }
+            }
+          }
+        }
+      }
+    },
+    "payments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["doc_number"],
+        "properties": {
+          "doc_number": {"type": ["string", "null"]},
+          "amount": {"type": ["number", "null"]},
+          "journal": {"type": ["string", "null"]},
+          "reconciled_bill": {"type": ["string", "null"]},
+          "destination_bank_account_id": {
+            "type": ["integer", "null"],
+            "description": "Which vendor bank account this payment was sent to (level B fact). Matches bank_account_additions[].bank_ref in the vendor_audit grain."
+          }
+        }
+      }
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event", "timestamp"],
+        "properties": {
+          "event": {"type": "string"},
+          "timestamp": {"type": ["string", "null"]},
+          "actor_user_id": {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "baselines": {
+      "type": "object",
+      "required": ["approval_threshold", "amount_total", "vendor_po_count_alltime", "vendor_avg_amount_alltime", "count_bills", "count_payments", "sum_received_qty", "sum_billed_qty"],
+      "properties": {
+        "approval_threshold": {"type": "number"},
+        "amount_total": {"type": ["number", "null"]},
+        "vendor_po_count_alltime": {"type": ["integer", "null"]},
+        "vendor_avg_amount_alltime": {"type": ["number", "null"]},
+        "vendor_po_count_prior": {"type": ["integer", "null"], "description": "count of this vendor's POs with date_order strictly earlier than this PO's (no future data). Null when there is no prior history."},
+        "vendor_avg_amount_prior": {"type": ["number", "null"], "description": "mean amount_total of this vendor's POs with date_order strictly earlier than this PO's (no future data). Null when there is no prior history."},
+        "count_bills": {"type": "integer"},
+        "count_payments": {"type": "integer"},
+        "sum_received_qty": {"type": ["number", "null"]},
+        "sum_billed_qty": {"type": ["number", "null"]},
+        "line_unit_price_vs_cost_ratio": {"type": "array", "items": {"type": ["number", "null"]}}
+      }
+    },
+    "state_log": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from_state": {"type": ["string", "null"]},
+          "to_state": {"type": ["string", "null"]},
+          "timestamp": {"type": ["string", "null"]},
+          "actor_uid": {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "vendor_other_pos": {
+      "type": "array",
+      "description": "This vendor's other purchase orders and their bills (excludes the current PO). Facts only, no comparison to the current PO.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "po_number": {"type": ["string", "null"]},
+          "date_order": {"type": ["string", "null"]},
+          "amount_total": {"type": ["number", "null"]},
+          "bills": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "doc_number": {"type": ["string", "null"]},
+                "ref": {"type": ["string", "null"]},
+                "amount_total": {"type": ["number", "null"]},
+                "date": {"type": ["string", "null"]}
+              }
+            }
+          }
+        }
+      }
+    },
+    "data_quality": {"type": "array", "items": {"type": "string"}},
+    "ground_truth": {
+      "type": "object",
+      "required": ["injected_anomaly"],
+      "properties": {
+        "injected_anomaly": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

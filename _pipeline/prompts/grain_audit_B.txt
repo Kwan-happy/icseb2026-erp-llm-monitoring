@@ -1,0 +1,25 @@
+GRAIN: audit
+
+The value of "grain" is "audit". The value of "unit_id" is the vendor id.
+
+Allowed anomaly types for this grain: "vendor_master_mod", or null.
+
+SCOPE
+
+This grain covers changes to the vendor's bank account only. Changes to other vendor fields, such as tax identifiers, are out of scope and must not be reported here.
+
+WHAT THE RECORD CONTAINS
+
+For this vendor, you are given a list of changes. Each change states the field that was changed, its old value, its new value, when the change happened, and which user made it. You are also given the dates on which this vendor was paid.
+
+VENDOR_MASTER_MOD
+
+Evidence supporting a finding: the change affects where money is sent, rather than contact information; the change falls close in time to a payment made to this vendor; the change was made by a user other than the one who normally maintains this vendor's record; the record was altered and then returned to its earlier value.
+
+Where money is sent is not only the account number. An address that a vendor's payments or correspondence follow determines the destination by the same means, and a change to it belongs in this review.
+
+A vendor may also carry more than one payment destination where a single one would be expected. That is not wrong in itself — suppliers do hold several accounts — but it widens the number of places a payment for this vendor can legitimately land.
+
+Evidence against a finding: the change is to information that is not sensitive.
+
+Timing and who made the change matter as much as which detail changed.

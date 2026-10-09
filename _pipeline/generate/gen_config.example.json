@@ -1,0 +1,34 @@
+{
+  "_comment": "GENERATION runtime config — connection + credentials + run scale ONLY. This file is NOT part of the frozen bundle and carries NO statistical parameter: every distribution/count lives in params.json (frozen) and every policy constant (approval_threshold, splitting_window_days) in _pipeline/config.json. Copy this file to gen_config.json and fill in the placeholders; gen_config.json is git-ignored because it holds passwords.",
+
+  "odoo": {
+    "url": "http://127.0.0.1:8069",
+    "dbname": "procurement_synth",
+    "users": {
+      "buyer": {
+        "_comment": "Non-manager buyer: purchase.group_purchase_user, NOT group_purchase_manager. Above-threshold POs this user confirms must route to 'To Approve' — that routing is what makes the scenario-4 self-approval signal meaningful.",
+        "login": "<FILL IN>",
+        "password": "<FILL IN>"
+      },
+      "manager": {
+        "_comment": "Purchase manager: purchase.group_purchase_manager. Approves above-threshold POs; also the actor for master-data setup and for the scenario-3 vendor-master tampering.",
+        "login": "<FILL IN>",
+        "password": "<FILL IN>"
+      }
+    }
+  },
+
+  "run": {
+    "_comment": "scale: 'smoke' = ~30 POs with all 5 scenarios present, for the end-to-end rehearsal; 'full' = the frozen counts from params.json. The smoke scale scales counts DOWN proportionally; it never changes a distribution.",
+    "scale": "smoke",
+    "smoke_total_pos": 30,
+    "batch_size": 50,
+    "stop_on_error": true
+  },
+
+  "paths": {
+    "params": "_pipeline/generate/params.json",
+    "pipeline_config": "_pipeline/config.json",
+    "out_dir": "_pipeline/generate/gen_out"
+  }
+}

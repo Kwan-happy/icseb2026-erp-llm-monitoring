@@ -1,0 +1,12 @@
+PROCUREMENT PROCESS
+
+The company's purchase-to-pay process follows this order:
+
+1. Request for quotation — the buyer asks a vendor for a quote.
+2. Confirm the order — the buyer turns the quotation into a confirmed purchase order.
+3. Approve the order — required only when the order meets the approval condition described in the approval matrix.
+4. Receive the goods — the ordered items arrive and are recorded as received.
+5. Record the vendor bill — the vendor's invoice is entered against the order.
+6. Pay the bill — the company settles the bill.
+
+One purchase order keeps the same identifier for its entire life, from the original quotation through to the final payment. All documents linked to one purchase can be traced back to that one identifier.

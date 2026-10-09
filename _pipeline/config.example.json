@@ -1,0 +1,36 @@
+{
+  "_comment": "Extraction config. Copy to _pipeline/config.json and fill in the DB credentials. Params only; the DB is a local read-only Odoo instance. Change threshold/window here to re-run on another dataset without touching code.",
+  "db": {
+    "host": "localhost",
+    "port": 5432,
+    "user": "odoo_user",
+    "password": "CHANGE_ME",
+    "dbname": "procurement_synth"
+  },
+  "params": {
+    "approval_threshold": 20000,
+    "splitting_window_days": 30,
+    "currency": "USD"
+  },
+  "paths": {
+    "sql": "_pipeline/sql/po_context.sql",
+    "sql_vendor_audit": "_pipeline/sql/vendor_audit.sql",
+    "schema_po": "_pipeline/schema/po_context.schema.json",
+    "schema_vendor": "_pipeline/schema/vendor_rollup.schema.json",
+    "schema_vendor_audit": "_pipeline/schema/vendor_audit.schema.json",
+    "out_dir": "_pipeline/out"
+  },
+  "redaction": {
+    "_comment": "Defense-in-depth policy for extract.py's assert_no_pii guard. po_context.sql/vendor_audit.sql already substitute a synthetic 'user_<id>' label for every real Odoo user name at the source, so no personal name should ever reach this pipeline's output. forbidden_patterns are regexes checked against the whole serialised object; identity_fields are the dotted/bracketed paths (see extract.py's walk_paths helper) that must, where present, hold a string matching identity_label_pattern.",
+    "forbidden_patterns": {
+      "email": "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+      "phone": "\\+\\d{7,15}\\b|\\b\\d{3}[-.\\s]\\d{3}[-.\\s]\\d{4}\\b|\\(\\d{2,4}\\)[-.\\s]?\\d{3,4}[-.\\s]?\\d{3,4}"
+    },
+    "identity_label_pattern": "^user_\\d+$",
+    "identity_fields": [
+      "po_identity.buyer.name",
+      "changes[].changed_by.name",
+      "bank_account_additions[].created_by.name"
+    ]
+  }
+}
