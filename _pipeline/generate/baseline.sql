@@ -10,8 +10,8 @@
 --
 -- Pre-registration: these rules were fixed BEFORE any evaluation data was
 -- generated. They are drawn from Odoo's own controls (the double-validation
--- approval threshold, the duplicate-bill warning) and the §3.2 anomaly
--- definitions — NOT tuned to the injected values. This script was
+-- approval threshold, the duplicate-bill warning) and the anomaly
+-- definitions in anomaly_spec.md — NOT tuned to the injected values. This script was
 -- committed before the dataset was generated.
 --
 -- Output: one row (grain, unit_id, scenario) per FLAGGED unit only.

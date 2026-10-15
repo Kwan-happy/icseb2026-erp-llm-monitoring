@@ -12,7 +12,7 @@ The repository holds the dataset-generation procedure, the extraction pipeline a
 | §4.2 Synthetic dataset and anomaly scenarios | `_pipeline/generate/` (`anomaly_spec.md`, `params.json`, `params_derivation.md`, generator code), `_pipeline/generate/gen_out/` (plan and ground-truth labels) |
 | §4.3 Rule-based SQL baseline | `_pipeline/generate/baseline.sql` |
 | §4.4 Prompt design and risk scoring | `_pipeline/prompts/` (frozen prompt files), `_pipeline/frozen/` (SHA-256 manifest, risk bands) |
-| §5.1 Evaluation | `_pipeline/llm_run.py`, `_pipeline/aggregate_runs.py`, `_pipeline/score.py`, `_pipeline/mcnemar_scenario.py`, `_pipeline/make_split.py` |
+| §5.1 Evaluation | `_pipeline/llm_run.py`, `_pipeline/aggregate_runs.py`, `_pipeline/score.py`, `_pipeline/make_split.py` |
 | Evaluated data | `_pipeline/out/` (`po_context.jsonl`, `vendor.jsonl`, `audit.jsonl`, `split.json`, `flags/sql_baseline.flags`) |
 | LLM outputs (evaluation split) | `_pipeline/llm_out/eval_*` (every request and response, with a run manifest), `_pipeline/llm_out/_majority_eval_*.flags` (k=5 majority vote) |
 
@@ -31,7 +31,9 @@ Copy `_pipeline/config.example.json` to `_pipeline/config.json`, `_pipeline/gene
 python _pipeline/score.py --flags _pipeline/llm_out/_majority_eval_ds_all.flags  --ruleset llm    --split _pipeline/out/split.json --side eval
 python _pipeline/score.py --flags _pipeline/llm_out/_majority_eval_gpt_all.flags --ruleset llm    --split _pipeline/out/split.json --side eval
 python _pipeline/score.py --flags _pipeline/out/flags/sql_baseline.flags         --ruleset frozen --split _pipeline/out/split.json --side eval
-python _pipeline/mcnemar_scenario.py --llm _pipeline/llm_out/_majority_eval_ds_all.flags
+# Scenario-aware McNemar tests against the SQL baseline (Table 4); use --mcnemar both to add the type-agnostic table
+python _pipeline/score.py --flags _pipeline/llm_out/_majority_eval_ds_all.flags  --ruleset llm --compare _pipeline/out/flags/sql_baseline.flags --compare-label sql_baseline --split _pipeline/out/split.json --side eval --mcnemar strict
+python _pipeline/score.py --flags _pipeline/llm_out/_majority_eval_gpt_all.flags --ruleset llm --compare _pipeline/out/flags/sql_baseline.flags --compare-label sql_baseline --split _pipeline/out/split.json --side eval --mcnemar strict
 ```
 
 ## Full pipeline
@@ -64,7 +66,7 @@ python _pipeline/mcnemar_scenario.py --llm _pipeline/llm_out/_majority_eval_ds_a
 
 ### Notes on the run manifests
 
-`grain_audit_A.txt` and `grain_audit_C.txt` were alternative drafts of the audit-level prompt, compared on the development split; `grain_audit_B.txt` was selected. The two drafts were still in the prompt folder during the evaluation runs, so each run manifest lists their file hashes. They were never sent to the model. The audit-level runs record `variant: B`. In the purchase-order and vendor-level runs, the `variant` field has no effect, because those levels do not use the audit prompt.
+`grain_audit_A.txt` and `grain_audit_C.txt` were alternative drafts of the audit-level prompt, compared on the development split; `grain_audit_B.txt` was selected. The two drafts were still in the prompt folder during the evaluation runs, so each run manifest lists their file hashes. They were never sent to the model. The audit-level runs record `variant: B`. In the purchase-order and vendor-level runs, the `variant` field has no effect, because those levels do not use the audit prompt. The `operating_point` field in the run manifests also notes a high-only flag file that each run writes. That file was not used in the paper's analysis. The paper reports medium-or-high as the operating point. Its sensitivity analysis compares results across different numbers of repeated queries (k).
 
 LLM outputs vary between identical requests, even at temperature 0. Re-querying will not reproduce the logged responses exactly. The logged responses in `_pipeline/llm_out/` are the ones the paper reports.
 

@@ -9,9 +9,11 @@ modification — which is what keeps the comparison symmetric.
 No detector logic lives here. This file only counts.
 
 Run from the repo root, e.g.:
-    python _pipeline/score.py --flags out/flags_frozen.txt
-    ... --flags out/flags_llm.txt --ruleset llm --compare out/flags_frozen.txt \\
-        --split out/split.json --side eval
+    python _pipeline/score.py --flags _pipeline/out/flags/sql_baseline.flags \\
+        --split _pipeline/out/split.json --side eval
+    python _pipeline/score.py --flags _pipeline/llm_out/_majority_eval_ds_all.flags --ruleset llm \\
+        --compare _pipeline/out/flags/sql_baseline.flags --compare-label sql_baseline \\
+        --split _pipeline/out/split.json --side eval --mcnemar strict
 
 Flag file format: one prediction per line, `grain|unit_id|scenario` (psql -tAF'|' output), or the
 same three fields as JSON lines. Blank lines and psql notices are ignored. A prediction whose
@@ -31,27 +33,20 @@ SCENARIO_GRAIN = {
     "po_splitting":      "vendor",
     "vendor_master_mod": "audit",
 }
-# Numbers fixed by label construction are labelled as such. These entries were measured by
-# scoring the frozen SQL baseline against `labels_variant.json` on the whole dataset. They are
-# printed only for that run.
+# Which parts of the frozen SQL baseline's score are fixed by label construction. Printed only
+# for the frozen rule set. They hold on any split.
 BY_CONSTRUCTION = {
-    "duplicate_payment": "recall on the 28 canonical cases is 1.00, fixed by construction "
-                         "(ground truth anchors the same signal the rule tests); the 12 "
-                         "evasive cases score 0.00 recall, measured, not fixed",
-    "abnormal_amount":   "recall on the 28 canonical cases is 1.00, fixed by construction "
-                         "(ground truth anchors the same signal the rule tests); the 12 "
-                         "evasive cases score 0.00 recall, measured, not fixed",
-    "approval_bypass":   "recall on the 28 canonical cases is 1.00, and precision on that "
-                         "same subset is fixed by construction for the shared-signal reason "
-                         "above; the 12 evasive cases score 0.50 recall (6 of 12 caught) — "
-                         "measured, not fixed, and not zero, unlike the other two po-grain "
-                         "scenarios",
-    "vendor_master_mod": "precision (12 canonical + 6 evasive bank tampers, all bank; precision "
-                         "pinned by the 9 designed legitimate-bank-change hard negatives — recall "
-                         "is measured, the 6 evasive variants are genuinely missable); canonical "
-                         "recall is 1.00, fixed by construction, evasive recall is 0.00, measured",
-    "po_splitting":      "nothing is fixed by construction — no evasive variant exists and the "
-                         "measured canonical recall is 0.22",
+    "duplicate_payment": "canonical recall is fixed at 1.00 by construction (the rule tests the "
+                         "same signal the canonical form injects); evasive recall is measured",
+    "abnormal_amount":   "canonical recall is fixed at 1.00 by construction (the rule tests the "
+                         "same signal the canonical form injects); evasive recall is measured",
+    "approval_bypass":   "canonical recall is fixed at 1.00 by construction (the rule tests the "
+                         "same signal the canonical form injects); evasive recall is measured",
+    "vendor_master_mod": "canonical recall is fixed at 1.00 by construction (the rule tests the "
+                         "same signal the canonical form injects); evasive recall and precision "
+                         "on hard negatives are measured",
+    "po_splitting":      "nothing is fixed by construction; there is no evasive form and the "
+                         "rule's recall is measured",
 }
 # Which scenarios each rule set claims to cover. A scenario a rule set never emits is reported
 # as "not covered", never as a score of zero — a zero would misread as a detector that failed.
@@ -354,12 +349,33 @@ def type_confusion(labels, preds, roles, keep, audit_hn=frozenset()):
     return tab
 
 
-def paired_comparison(labels, preds_a, preds_b, roles, keep):
+def correct_units_strict(labels, preds, grain, universe):
+    """Units handled correctly under the primary metric's definition: a positive is correct
+    only when flagged at this grain with its true scenario; a negative is correct when it
+    carries no flag at all, whatever the scenario name."""
+    flagged, _ = detected_units(preds, labels, grain, universe)
+    out = set()
+    for u in universe:
+        true = labels[grain][u]
+        if true is None:
+            if u not in flagged:
+                out.add(u)
+        elif (grain, u, true) in preds:
+            out.add(u)
+    return out
+
+
+def paired_comparison(labels, preds_a, preds_b, roles, keep, strict=False):
     """McNemar's exact test on matched units, with both discordant counts.
 
     Two scopes are reported: detection agreement within each grain, and the better-powered
     pooled test over the per-PO hard negatives, where the event of interest is "avoided the
     designed trap".
+
+    strict=False (default) is the type-agnostic definition: a positive is correct if flagged
+    under any scenario name. strict=True uses the primary metric's definition instead (see
+    correct_units_strict). The hard-negative scope is identical under both, because a hard
+    negative has no true scenario and is correct only when unflagged.
     """
     rows = []
     for grain in ("po", "vendor", "audit"):
@@ -370,8 +386,12 @@ def paired_comparison(labels, preds_a, preds_b, roles, keep):
         a, _ = detected_units(preds_a, labels, grain, universe)
         b, _ = detected_units(preds_b, labels, grain, universe)
         # a unit is handled correctly when a positive is flagged and a negative is not
-        ca = {u for u in universe if (u in a) == (u in truth)}
-        cb = {u for u in universe if (u in b) == (u in truth)}
+        if strict:
+            ca = correct_units_strict(labels, preds_a, grain, universe)
+            cb = correct_units_strict(labels, preds_b, grain, universe)
+        else:
+            ca = {u for u in universe if (u in a) == (u in truth)}
+            cb = {u for u in universe if (u in b) == (u in truth)}
         only_a, only_b = len(ca - cb), len(cb - ca)
         rows.append(dict(scope=f"{grain} grain, all units", n=len(universe),
                          only_a=only_a, only_b=only_b, p=mcnemar_exact(only_a, only_b)))
@@ -499,15 +519,21 @@ def render(label, strict, strat, detect, confusion, compare, dataset_note, cover
         if base in SCENARIO_GRAIN and base not in covers:
             continue
         A(f"| `{scen}` | {true} | {n} |")
-    if compare:
-        rows, label_b = compare
+    for mode, rows, label_b in (compare or []):
         A("")
-        A("## 6. Paired comparison — McNemar exact")
-        A("")
-        A(f"Both detectors read identical evidence, so every unit is a matched pair. **A** = "
-          f"{label}; **B** = {label_b}. The discordant counts are reported with the p-value, "
-          f"because they are what shows whether a statistically significant difference is also "
-          f"a practically meaningful one.")
+        if mode == "strict":
+            A("## 6. Paired comparison — McNemar exact, scenario-aware")
+            A("")
+            A(f"Both detectors read identical evidence, so every unit is a matched pair. **A** = "
+              f"{label}; **B** = {label_b}. Correctness follows the primary metric: a positive "
+              f"unit is correct only when flagged with its true scenario, and a negative unit is "
+              f"correct when it is not flagged at all.")
+        else:
+            A("## 6. Paired comparison — McNemar exact, type-agnostic")
+            A("")
+            A(f"Both detectors read identical evidence, so every unit is a matched pair. **A** = "
+              f"{label}; **B** = {label_b}. A positive unit is correct when it is flagged under "
+              f"any scenario name, and a negative unit is correct when it is not flagged.")
         A("")
         A("| Scope | units | A correct, B wrong | B correct, A wrong | p (two-sided exact) |")
         A("|---|---:|---:|---:|---:|")
@@ -528,6 +554,10 @@ def main():
     ap.add_argument("--compare", default=None,
                     help="second flag file to pair against, for the McNemar test")
     ap.add_argument("--compare-label", default="comparator")
+    ap.add_argument("--mcnemar", choices=["loose", "strict", "both"], default="loose",
+                    help="paired-test definition of a correct unit: 'loose' = type-agnostic "
+                         "(default), 'strict' = scenario-aware, matching the primary metric, "
+                         "'both' = both tables")
     ap.add_argument("--split", default=None,
                     help="JSON {'dev': [vendor_id...], 'eval': [...]}; requires --side")
     ap.add_argument("--side", choices=["dev", "eval"], default=None)
@@ -556,7 +586,7 @@ def main():
         # not twice. Without this check a vendor missing from both sides is silently dropped
         # from every denominator (wrong numbers, no diagnostic); a vendor in both sides is
         # scored on both, double-counting it. This does not change any metric for a valid
-        # split file — it only rejects invalid ones that used to pass silently.
+        # split file — it only rejects invalid split files.
         universe = set(labels["vendor"]) | set(labels["audit"])
         dev_s, eval_s = split.get("dev", set()), split.get("eval", set())
         both, missing, unknown = (dev_s & eval_s, universe - (dev_s | eval_s),
@@ -587,10 +617,17 @@ def main():
     strat = stratified_rates(labels, preds, roles, hn_kind, keep, audit_hn)
     detect = detection_view(labels, preds, roles, keep)
     confusion = type_confusion(labels, preds, roles, keep, audit_hn)
-    compare = None
+    compare = []
     if args.compare:
-        compare = (paired_comparison(labels, preds, load_flags(args.compare), roles, keep),
-                   args.compare_label)
+        preds_b = load_flags(args.compare)
+        modes = ["loose", "strict"] if args.mcnemar == "both" else [args.mcnemar]
+        for mode in modes:
+            compare.append((mode, paired_comparison(labels, preds, preds_b, roles, keep,
+                                                    strict=(mode == "strict")),
+                            args.compare_label))
+    by_mode = {mode: rows for mode, rows, _ in compare}
+    if args.compare and "loose" not in by_mode:            # the JSON always carries the loose rows
+        by_mode["loose"] = paired_comparison(labels, preds, preds_b, roles, keep)
 
     covers = RULESET_COVERAGE[args.ruleset]
     report = render(label, strict, strat, detect, confusion, compare, note, covers,
@@ -608,7 +645,8 @@ def main():
             "detection_view": [dict(r, covered=r["grain"] in covered_grains) for r in detect],
             "type_confusion": [{"flagged_as": k[0], "true_label": k[1], "n": v}
                                for k, v in sorted(confusion.items())],
-            "paired_comparison": (compare[0] if compare else None),
+            "paired_comparison": by_mode.get("loose"),
+            "paired_comparison_strict": by_mode.get("strict"),
             "prevalences": list(PREVALENCES),
         }, indent=2, default=str), encoding="utf-8", newline="\n")
     return 0

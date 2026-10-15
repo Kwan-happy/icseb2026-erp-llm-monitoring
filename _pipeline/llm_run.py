@@ -824,7 +824,7 @@ def write_outputs(run_dir, resp_path, run_id, args, cfg, prompts, started, n_uni
         "ground_truth_sent": False,
         "flags_file": "flags.txt",
         "flags_high_only_file": "flags_high_only.txt",
-        "operating_point": "flag = medium OR high; high-only reported as sensitivity",
+        "operating_point": "flag = medium OR high",
     }
     # Restore the as-executed provenance last, so a rebuild cannot overwrite it with today's
     # world (see CARRIED_PROVENANCE). Empty on a live run, which observes it for real.
